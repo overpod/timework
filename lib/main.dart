@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
       });
       timer = new Timer.periodic(Duration(seconds:1), callback);
     }else{
-      print(timer.isActive);
+      //print(timer.isActive);
       if(timer.isActive){
         timer.cancel();
       }else{
@@ -81,6 +81,8 @@ class _HomePageState extends State<HomePage> {
         timer = new Timer.periodic(Duration(seconds:1), callback);
       }
     }
+
+    setState((){});
   }
 
   void callback(Timer timer) {
@@ -149,7 +151,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: new FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: new Icon(Icons.add),
+        child: new Icon((timer != null && timer.isActive) ? Icons.stop : Icons.play_arrow ),
       ),
 
       // This trailing comma makes auto-formatting nicer for build methods.
